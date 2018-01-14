@@ -1,6 +1,8 @@
 <?php
+
 $websiteTitle = "MYWEBSITE";
-$securityKey = "SUPER SECURE KEY";
+$securityKey = "SUPER SECURE KEY"; // basically prevents others from sending rcon commands by exploiting the site
+
 
 $servers = array(
     array(
