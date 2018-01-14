@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php 
-
 session_start();
 if(!isset($_SESSION['username'])) {
 header( "refresh:0;url=login.php" );
 die();
 }
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
 include("inc/config.php");
 include("inc/head.php");
 ?>

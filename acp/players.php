@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php 
 session_start();
 if(!isset($_SESSION['username'])) {
 header( "refresh:0;url=login.php" );
 die();
 }
+?>
 
-include("inc/config.php"); 
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
+include("inc/config.php");
 include("inc/head.php");
+
 	  
 	ini_set('default_socket_timeout', 2);
 	foreach ($servers as &$server) {

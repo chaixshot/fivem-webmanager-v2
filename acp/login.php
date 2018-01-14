@@ -1,10 +1,13 @@
+<?php 
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
-<?php 
-
-session_start();
 
 
+<?php
 if (isset($_GET["logout"])){
 	// Löschen aller Session-Variablen.
 	$_SESSION = array();

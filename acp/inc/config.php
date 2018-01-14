@@ -25,7 +25,7 @@ $logins = array( // Username, Password (http://www.sha1-online.com/)
 );
 
 
-$groups = array( // REAL STEAM IDS -> http://steamid.io | class names (colors) are from -> https://getbootstrap.com/docs/4.0/components/badge/#contextual-variations
+$groups = array( // REAL STEAM IDS (64) -> http://steamid.io | class names (colors) are from -> https://getbootstrap.com/docs/4.0/components/badge/#contextual-variations
 	array(
 		"name"	=> "Admin",
 		"class" => "badge badge-danger",
