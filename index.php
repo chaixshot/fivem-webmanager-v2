@@ -34,7 +34,7 @@ include("acp/inc/config.php");
 
 <?php
 	  
-	ini_set('default_socket_timeout', 3);
+	ini_set('default_socket_timeout', $timeoutAfterSeconds);
 	foreach ($servers as &$server) {
 		//echo $server;
 		$url = "http://".$server["ip"].":".$server["port"]."/players.json";

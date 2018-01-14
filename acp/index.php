@@ -37,6 +37,8 @@ include("inc/head.php");
                 <!-- /.row -->
                 <div class="row">
 				<?php
+					ini_set('default_socket_timeout', $timeoutAfterSeconds);
+					
 					foreach ($servers as &$server) {
 						$url = "http://".$server["ip"].":".$server["port"]."/players.json";
 						$json = @file_get_contents($url); // this WILL do an http request for you

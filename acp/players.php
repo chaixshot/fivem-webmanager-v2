@@ -14,7 +14,7 @@ include("inc/config.php");
 include("inc/head.php");
 
 	  
-	ini_set('default_socket_timeout', 2);
+	ini_set('default_socket_timeout', $timeoutAfterSeconds);
 	foreach ($servers as &$server) {
 		//echo $server;
 		$url = "http://".$server["ip"].":".$server["port"]."/players.json";

@@ -2,7 +2,7 @@
 
 $websiteTitle = "MYWEBSITE";
 $securityKey = "SUPER SECURE KEY"; // basically prevents others from sending rcon commands by exploiting the site
-
+$timeoutAfterSeconds = 3; // more seconds means a longer site load when a server is not reachable
 
 $servers = array(
     array(
