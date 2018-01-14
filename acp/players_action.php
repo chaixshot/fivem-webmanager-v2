@@ -45,7 +45,7 @@ if (isset($_GET['message'])) {
 							
 				$con = new q3query($server["ip"], $server["port"], $success);
 				if (!$success) {
-					die ("Fehler bei der Verbindungherstellung");
+					die ("Failed to Connect.");
 				}
 				$con->setRconpassword($server["rcon"]);
 				$con->rcon("$action ".$player->id." $action_message");
