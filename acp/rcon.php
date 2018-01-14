@@ -4,6 +4,8 @@ if(!isset($_SESSION['username'])) {
 header( "refresh:0;url=login.php" );
 die();
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +16,25 @@ include("inc/config.php");
 include("inc/head.php");
 
 
+	foreach ($groups as &$group) {
+		foreach ($group["members"] as &$member) {
+			if($member["username"] == $_SESSION['username'] ){
+				foreach ($group["rights"] as &$right) {
+					if ($right == "rcon") {
+						$rightFound = true;
+					}
+				}
+				if(!isset($rightFound)){
+					header( "refresh:0;url=index.php");
+					die();
+				}
+			}
+		}
+	}
+	
+
+	
+	
 	  
 if (isset($_POST['server'])) {
 	if($_POST['server'] == ""){

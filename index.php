@@ -155,7 +155,7 @@ include("acp/inc/config.php");
 										
 										for (var group in groups) {
 											for (var member in groups[group].members) {
-												if (groups[group].members[member] == identifiers_realsteam) {
+												if (groups[group].members[member].steam == identifiers_realsteam) {
 													tag = "<span class='" + groups[group].class + "'>[" + groups[group].name + "]</span>";
 													
 												}

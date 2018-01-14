@@ -39,18 +39,32 @@ include("inc/config.php");
 		$login++;
 	}
 	if (isset($_POST["password"])){
+		if ($_POST["password"] == "" or $_POST["password"] == " "){
+				header( "refresh:0;url=login.php?failedlogin=true" );
+			die();
+		}
 		$login_pass = $_POST["password"];
 		$login++;
 	}
 	
 	if ($login == 2) {
-		foreach ($logins as &$login) {
-			if ( $login_user == $login[0] && sha1($login_pass) == $login[1]){
-				$_SESSION['username'] = $login[0];
-				header( "refresh:0;url=index.php" );
+		
+	foreach ($groups as &$group) {
+		foreach ($group["members"] as &$member) {
+			if($member["username"] == $login_user && $member["password"] == sha1($login_pass)){
+				foreach ($group["rights"] as &$right) {
+					if ($right == "login") {
+						$_SESSION['username'] = $member["username"];
+						header( "refresh:0;url=index.php" );
+						die();
+					}
+				}
+				header( "refresh:0;url=login.php?norights=true");
 				die();
 			}
 		}
+	}
+	
 		
 		header( "refresh:0;url=login.php?failedlogin=true");
 	}
@@ -86,6 +100,9 @@ include("inc/config.php");
 <?php
 if (isset($_GET["failedlogin"])){
 	echo "<div class='alert alert-danger' role='alert'>Login failed. </br>Please try another username or password.</div>";
+}
+if (isset($_GET["norights"])){
+	echo "<div class='alert alert-danger' role='alert'>Login failed. </br>You need more rights to log in.</div>";
 }
 ?>
       <form class="form-signin" action="login.php" method="post">

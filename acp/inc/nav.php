@@ -23,7 +23,20 @@
                     <!-- <li><a href="profile.html" class="waves-effect"><i class="ti-settings fa-fw"></i>Settings</a></li> -->
 					<!-- <li><a href="basic-table.html" class="waves-effect"><i class="ti-layout-tab fa-fw"></i>Groups</a></li> -->
                     <li><a href="players.php" class="waves-effect"><i class="ti-user fa-fw"></i>Players</a></li>
-					<li><a href="rcon.php" class="waves-effect"><i class="ti-shortcode fa-fw"></i>RCON</a></li>
+					<?php
+						foreach ($groups as &$group) {
+							foreach ($group["members"] as &$member) {
+								if($member["username"] == $_SESSION['username']){
+									foreach ($group["rights"] as &$right) {
+										if ($right == "rcon") {
+											echo "<li><a href='rcon.php' class='waves-effect'><i class='ti-shortcode fa-fw'></i>RCON</a></li>";
+										}
+									}
+								}
+							}
+						}
+					?>
+					
 					<!-- <li><a href="serverevents.php" class="waves-effect"><i class="ti-menu-alt fa-fw"></i>Server events</a></li> -->
 
 					<!--<li><a href="basic-table.html" class="waves-effect"><i class="ti-comments fa-fw"></i>Messages</a></li>-->

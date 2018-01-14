@@ -107,7 +107,7 @@ include("inc/head.php");
 										
 										for (var group in groups) {
 											for (var member in groups[group].members) {
-												if (groups[group].members[member] == identifiers_realsteam) {
+												if (groups[group].members[member].steam == identifiers_realsteam) {
 													tag = "<span class='" + groups[group].class + "'>[" + groups[group].name + "]</span>";
 													
 												}
@@ -173,8 +173,40 @@ include("inc/head.php");
 								document.getElementById("steamprofileurl").href = "#"
 							}
 							
-							document.getElementById("modal_action_kick").href = "players_action.php?action=clientkick&steam=" + identifiers_stripped + "&pass=sincislovesincislife";
-							document.getElementById("modal_action_ban").href  = "players_action.php?action=tempban&steam=" + identifiers_stripped + "&pass=sincislovesincislife";
+							
+							// disable both buttons before checking rights
+							document.getElementById("modal_action_kick").setAttribute("disabled", true);
+							document.getElementById("modal_action_ban").setAttribute("disabled", true);
+							// check for kick right
+							for (var group in groups) {
+								for (var member in groups[group].members) {
+									if (groups[group].members[member].username == "<?php echo $_SESSION['username'] ?>") {
+										for (var right in groups[group].rights){
+											if (groups[group].rights[right] == "kick") {
+												document.getElementById("modal_action_kick").removeAttribute("disabled");
+												document.getElementById("modal_action_kick").href = "players_action.php?action=clientkick&steam=" + identifiers_stripped + "&pass=sincislovesincislife";
+											}
+										}
+										
+									}
+								}
+							}
+							// check for ban right
+							for (var group in groups) {
+								for (var member in groups[group].members) {
+									if (groups[group].members[member].username == "<?php echo $_SESSION['username'] ?>") {
+										for (var right in groups[group].rights){
+											if (groups[group].rights[right] == "ban") {
+												document.getElementById("modal_action_ban").removeAttribute("disabled");
+												document.getElementById("modal_action_ban").href  = "players_action.php?action=tempban&steam=" + identifiers_stripped + "&pass=sincislovesincislife";
+											}
+										}
+										
+									}
+								}
+							}							
+							
+							
 							
 							var base_kick_url = document.getElementById("modal_action_kick").href;
 							var base_ban_url = document.getElementById("modal_action_kick").href;
