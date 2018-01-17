@@ -31,16 +31,21 @@ if (isset($_GET['message'])) {
 
 
 	// push players from json file into the array
+	ini_set('default_socket_timeout', $timeoutAfterSeconds);
 	foreach ($servers as &$server) {
+		//echo $server;
 		$url = "http://".$server["ip"].":".$server["port"]."/players.json";
-		$json = file_get_contents($url); // this WILL do an http request for you
+		$json = @file_get_contents($url); // this WILL do an http request for you
 		$data = json_decode($json);
+		if($json === FALSE ){ $data = array(); }
 		$server["players"] = $data;
 	}
+	
 	
 	// check if the user exists on one of the servers
 	foreach ($servers as &$server) {
 		foreach ($server["players"] as &$player) {
+			
 			if ($player->identifiers[0] == "steam:".$user_steam OR $player->identifiers[0] == "license:".$user_steam) {
 							
 				$con = new q3query($server["ip"], $server["port"], $success);

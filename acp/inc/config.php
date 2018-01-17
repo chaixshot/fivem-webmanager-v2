@@ -34,12 +34,12 @@ $groups = array(
 			array(
 				"username"	=> "user1",
 				"password" 	=> "HASH OF THE PASSWORD",
-				"steam"		=> "steam:123",
+				"steam"		=> "steam:REAL STEAM IDS (64)",
 			),
 			array(
 				"username"	=> "user2",
 				"password" 	=> "HASH OF THE PASSWORD",
-				"steam"		=> "steam:234",
+				"steam"		=> "steam:REAL STEAM IDS (64)",
 			),
 		),
 		"rights"	=> ["login", "kick", "ban", "rcon"],
@@ -52,7 +52,7 @@ $groups = array(
 			array(
 				"username"	=> "user3",
 				"password" 	=> "HASH OF THE PASSWORD",
-				"steam"		=> "steam:345",
+				"steam"		=> "steam:REAL STEAM IDS (64)",
 			)
 		),
 		"rights"	=> ["login", "kick"],
@@ -65,7 +65,7 @@ $groups = array(
 			array(
 				"username"	=> "user4",
 				"password" 	=> "PASSWORD HASH",
-				"steam"		=> "steam:456",
+				"steam"		=> "steam:REAL STEAM IDS (64)",
 			)
 		),
 		"rights"	=> [],
