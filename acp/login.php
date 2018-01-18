@@ -51,7 +51,7 @@ include("inc/config.php");
 		
 	foreach ($groups as &$group) {
 		foreach ($group["members"] as &$member) {
-			if($member["username"] == $login_user && $member["password"] == sha1($login_pass)){
+			if($member["username"] == $login_user && $member["password"] == $login_pass){
 				foreach ($group["rights"] as &$right) {
 					if ($right == "login") {
 						$_SESSION['username'] = $member["username"];
